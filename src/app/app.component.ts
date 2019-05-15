@@ -9,7 +9,7 @@ import { HttpService } from './services/http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  colors: Array<string>; 
+  colors; 
 
   constructor(
     private http: HttpService
@@ -20,6 +20,8 @@ export class AppComponent {
     this.http.getColors().subscribe((res : any[])=>{
       if(res !== undefined || res !== null) {
         this.colors = res.matching_colors;
+        
+        this.removeIfEmpty();
 
       }
     });
@@ -27,7 +29,16 @@ export class AppComponent {
 
   loadMoreColors() {
     this.http.getColors().subscribe((res : any[])=>{
-      this.colors.concat(res.matching_colors);
+      debugger
+      this.colors = this.colors.concat(res.matching_colors);
+      this.removeIfEmpty();
     });
+  }
+  
+  // check if hex color is now empty, if it is remove it from the array
+  removeIfEmpty() {
+    for(let i = 0; i < this.colors.length; i++) {
+      if(this.colors[i].length === 0) this.colors.splice(i, 1);
+    }
   }
 }

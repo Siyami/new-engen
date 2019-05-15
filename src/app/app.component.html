@@ -1,19 +1,58 @@
-<div class="row" id="display">
-  <div *ngFor="let color of colors" class="card" [style.backgroundColor]="'#' + color">
-      <div [style.backgroundColor]="'#' + color"></div>
-      <div class="container">
-          <p class="color-name" [style.color]="color" >{{color}}</p>
+<!-- ., .n, and .navbar-expand{-sm|-md|-lg|-xl} -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-toggler navbar-collapse">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <img src="../assets/design/NewEngen-Logo.svg">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul> -->
+    <form class="form-inline my-2 my-lg-0" style="float: right">
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      <div id="ex3">
+        <img src="../assets/design/CartIcon.svg" id="lblCartCount">
       </div>
+
+      <button type="button" class="btn btn-secondary">
+        Cart <span class="badge badge-danger">9</span>
+      </button>
+      
+    </form>
+  </div>
+</nav>
+
+
+<div class="row" style="margin-left: 40px;">
+  <div *ngFor="let color of colors" class="card" style="width: 10rem; height: 10rem; margin: 0px 20px 20px 0;" [style.backgroundColor]="'#' + color">
+    <div class="card-body">
+      <p class="card-text">{{color}}</p>
+    </div>
   </div>
 </div>
 
-<div class="row">
-<div *ngFor="let color of colors" class="card" [style.backgroundColor]="'#' + color"> 
-  <!-- <div [ngStyle]="{background-color: color}"></div> -->
-  <div class="card-body" [style.background]="color"> 
-    <p [style.color]="color" class="card-text">{{color}}</p>
-  </div>
-</div>
-</div>
-
-
+<button (click)="loadMoreColors()">Load More</button>
